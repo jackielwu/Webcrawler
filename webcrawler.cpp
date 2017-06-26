@@ -6,7 +6,8 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 {
 	_maxUrls = maxUrls;
 	_urlArray = new URLRecord*[_maxUrls];
-	
+	_urlToUrlRecord = new HashTableTemplate<int>();
+	_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 }
 
 void WebCrawler::crawl()
