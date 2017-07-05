@@ -14,7 +14,7 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 	{
 	  URLRecord *e = new URLRecord;
 	  e->_url = (char *) urlRoots[i];
-	  _urlArray[_tailURL++] = e;
+	  _urlArray[_tailURL++] = *e;
 	}
 }
 
