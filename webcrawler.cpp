@@ -54,10 +54,10 @@ void WebCrawler::writeWordFile(const char *wordFilename)
 
 }
 
-void WebCrawler::onContentFound(char c) {
+/*void WebCrawler::onContentFound(char c) {
   printf("%c", c);
 }
 
 void WebCrawler::onAnchorFound(char * url) {
   printf("%s\n", url);
-}
+}*/
