@@ -23,6 +23,8 @@ void WebCrawler::crawl()
 	while(_headURL < _tailURL)
 	{
 		//Fetach the next URL is _headURL
+		int *n;
+		fetchHTML(_urlArray[_headURL]->_url, n);
 		_headURL++;
 		//If doc is not txt/html
 		if(!)

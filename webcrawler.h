@@ -16,7 +16,7 @@ struct URLRecordList {
   URLRecordList * _next;   // Pointer to the next URL Record in the list
 };
 
-class WebCrawler {
+class WebCrawler: SimpleHTMLParser {
   // The url array stores all the URLs that have been scanned
   int _maxUrls;            // Max size of the URL array
   URLRecord * _urlArray;   // Array of URLs 
