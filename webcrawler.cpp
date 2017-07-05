@@ -27,7 +27,7 @@ void WebCrawler::crawl()
 		fetchHTML(_urlArray[_headURL]._url, n);
 		_headURL++;
 		//If doc is not txt/html
-		if(!)
+		if(!true)
 		{
 			;
 		}
