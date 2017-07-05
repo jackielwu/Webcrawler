@@ -22,14 +22,14 @@ void WebCrawler::crawl()
 {
 	while(_headURL < _tailURL)
 	{
-		//Fetach the next URL is _headURL
-		int *n;
-		fetchHTML(_urlArray[_headURL]._url, n);
+		//Fetch the next URL is _headURL
+		int n;
+		char * buffer = fetchHTML(_urlArray[_headURL]._url, &n);
 		_headURL++;
 		//If doc is not txt/html
-		if(!true)
+		if(buffer == NULL)
 		{
-			;
+			continue;
 		}
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
@@ -52,4 +52,12 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 void WebCrawler::writeWordFile(const char *wordFilename)
 {
 
+}
+
+void WebCrawler::onContentFound(char c) {
+  printf("%c", c);
+}
+
+void WebCrawler::onAnchorFound(char * url) {
+  printf("%s\n", url);
 }

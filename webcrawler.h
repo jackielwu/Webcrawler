@@ -42,6 +42,9 @@ class WebCrawler: public SimpleHTMLParser {
   void writeWordFile(const char *wordFileName);
 
   // Add any other objects you may need
+  void onAnchorFound(char * url);
+  
+  void onContentFound(char c);
 };
 
 
