@@ -37,7 +37,7 @@ void WebCrawler::crawl()
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
 		//Only insert up to _maxURL entries
 		
-		for(word: doc)
+		//for(word: doc)
 		{
       //Add index of URL to URLRecordList in _wordToURLRecordList table
       //if the URL is not already there		
