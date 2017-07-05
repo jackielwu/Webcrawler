@@ -212,3 +212,6 @@ After doing this, you may fix the identity used for this commit with:
  2 files changed, 4 insertions(+), 1 deletion(-)
 [master e2aa44b] Commit web-crawler
  3 files changed, 11 insertions(+), 1 deletion(-)
+[master eeb4cca] Commit web-crawler
+ 5 files changed, 210 insertions(+), 3 deletions(-)
+ create mode 100644 HashTableTemplate.h
