@@ -3,11 +3,15 @@
 
 #include "HashTableTemplate.h"
 #include "SimpleHTMLParser.h"
+#include <string>
+#include <fstream>
+#include <iostream>
 
 // Stores a URL and the first 100 words
 struct URLRecord {
   char * _url;          // URL of the document.
   char * _description;  // First 100 words of the document without tags
+  int _i = 0;
 };
 
 // Used to implement a list of URL indexes of the url array.
@@ -27,6 +31,14 @@ class WebCrawler: public SimpleHTMLParser {
   HashTableTemplate<int> * _urlToUrlRecord;         //  maps a URL to its index in the URLArray 
   
   HashTableTemplate<URLRecordList *> *_wordToURLRecordList; // maps a word to a list of URLs
+  
+  //bool parse(char *buffer, int n);//handles char and link
+  
+  void onAnchorFound(char *url)'
+  
+  void onContentFound(char c);
+  
+  void findWord(char c);
 
  public:
   // Create a web crawler object with the initial urls
@@ -42,9 +54,10 @@ class WebCrawler: public SimpleHTMLParser {
   void writeWordFile(const char *wordFileName);
 
   // Add any other objects you may need
-  //void onAnchorFound(char * url);
   
-  //void onContentFound(char c);
+  int main(int argc, char **argv);
+  
+  void printUsage();
 };
 
 
