@@ -144,7 +144,7 @@ void WebCrawler::findWord(char c)
 int main( int argc, char ** argv )
 {
   const char * option;
-  char * url;
+  char ** url;
   int maxURL;
   int nURL;
   
