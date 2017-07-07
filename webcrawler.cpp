@@ -65,7 +65,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	else cout << "Unable to open file\n";
 	return;
 }
-void WebCrawler::writeWordFile(const char *wordFilename)
+void WebCrawler::writeWordFile(const char *wordFileName)
 {
 	ofstream file;
 	file.open(wordFileName);
@@ -98,7 +98,7 @@ void WebCrawler::onContentFound(char c) {
 
 void WebCrawler::onAnchorFound(char * url)
 {
-  if(_tailURL < _maxURLs)
+  if(_tailURL < _maxUrls)
   {
   	if(url[0] != '#')
   	{
