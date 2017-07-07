@@ -134,7 +134,8 @@ void WebCrawler::findWord(char c) {
     }
     else {
     	_wordToUrlRecordList.insertItem(word, n);
-  }
+		}
+	}
 }
 
 int main( int argc, char ** argv )
