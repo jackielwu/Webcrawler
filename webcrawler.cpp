@@ -71,7 +71,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	file.open(wordFileName);
 	//Iterator
 	if(file.is_Open()) {
-		HashTableTemplateIterator<URLRecordList *> iterator(_wordToUrlRecordList);
+		HashTableTemplateIterator<URLRecordList *> iterator(_wordToURLRecordList);
 		const char * key;
 		URLRecordList *e;
 		while (iterator.next(key, e)) {
