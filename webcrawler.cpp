@@ -154,7 +154,7 @@ int main( int argc, char ** argv )
   }
   else if (argc == 2) {
 	  option = "";
-	  url = argv[1];
+	  url = &argv[1];
   }
   else { 
 	  // There is an option
