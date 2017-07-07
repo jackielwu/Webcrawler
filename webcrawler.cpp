@@ -105,7 +105,7 @@ void WebCrawler::onAnchorFound(char * url)
   		string u(url);
   		if(u.find("http") == 0) {
   			_urlArray[_tailURL]._url = url;
-  			_urlToUrlRecord.insert(url, _tailURL);
+  			_urlToUrlRecord.insert(url, _tailURL	);
   		}
   		else if(u.find("http") == string::npos) {
   			u.insert(0, "/");//handle separation for relative links
@@ -160,7 +160,7 @@ int main( int argc, char ** argv )
 	  // There is an option
 	  option = argv[1];
 	  maxURL = (int)argv[2];
-	  url = *argv[3];
+	  url = argv[3];
 	  nURL = (int)argc-2;
   }
   
