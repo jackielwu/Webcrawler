@@ -10,7 +10,7 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 	_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 	_headURL = 0;
 	_tailURL = 0;
-	std::string temp;
+	string temp;
 	for(int i=0;i<nurlRoots;i++)
 	{
 	  URLRecord *e = new URLRecord;
@@ -49,7 +49,7 @@ void WebCrawler::crawl()
 
 void WebCrawler::writeURLFile(const char * urlFileName)
 {
-	std::ofstream file;
+	ofstream file;
 	file.open(urlFileName);
 	//Iterator
 	if(file.is_Open()) {
@@ -68,7 +68,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 }
 void WebCrawler::writeWordFile(const char *wordFilename)
 {
-	std::ofstream file;
+	ofstream file;
 	file.open(urlFileName);
 	//Iterator
 	if(file.is_Open()) {

@@ -7,6 +7,8 @@
 #include <fstream>
 #include <iostream>
 
+using namespace std;
+
 // Stores a URL and the first 100 words
 struct URLRecord {
   char * _url;          // URL of the document.
