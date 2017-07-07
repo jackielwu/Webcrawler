@@ -174,7 +174,7 @@ int main( int argc, char ** argv )
 	  // default 1000 maxURLs
 	  maxURL = 1000;
 	  nURL = 1;
-	  WebCrawler wc = new WebCrawler(maxURL, nURL, url);
+	  WebCrawler wc(maxURL, nURL, url);
 	  wc.crawl();
 	  wc.writeURLFile("url.txt");
 	  wc.writeWordFile("word.txt");
