@@ -102,7 +102,7 @@ void WebCrawler::onAnchorFound(char * url)
   {
   	if(url[0] != '#')
   	{
-  		std::string u(url);
+  		string u(url);
   		if(u.find("http") == 0) {
   			_urlArray[_tailURL]._url = url;
   			_urlToUrlRecord.insert(url, _tailURL);
@@ -126,7 +126,7 @@ void WebCrawler::findWord(char c)
   else {
     //put string into word
     const char *word = temp.c_str();
-    URLRecordList e;
+    URLRecordList *e;
     URLRecordList n = new URLRecordList;
 		n->_urlRecordIndex = _headURL;
     if(_wordToUrlRecordList.find(word, &e)) {
