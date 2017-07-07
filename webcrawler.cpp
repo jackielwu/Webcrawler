@@ -159,9 +159,9 @@ int main( int argc, char ** argv )
   else { 
 	  // There is an option
 	  option = argv[1];
-	  maxURL = argv[2];
+	  maxURL = (int)argv[2];
 	  url = *argv[3];
-	  nURL = argc-2;
+	  nURL = (int)argc-2;
   }
   
   // Process the arguments
