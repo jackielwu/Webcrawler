@@ -129,14 +129,14 @@ void WebCrawler::findWord(char c)
     URLRecordList *e;
     URLRecordList *n = new URLRecordList;
 		n->_urlRecordIndex = _headURL;
-    if(_wordToUrlRecordList.find(word, &e)) {
+    if(_wordToURLRecordList.find(word, &e)) {
     	if(e->_urlRecordIndex != _headURL) {
     		e->_next = n;
     		n->_next = NULL;
     	}
     }
     else {
-    	_wordToUrlRecordList.insertItem(word, n);
+    	_wordToURLRecordList.insertItem(word, n);
 		}
 	}
 }
