@@ -161,7 +161,7 @@ int main( int argc, char ** argv )
 	  option = argv[1];
 	  maxURL = atoi(argv[2]);
 	  url = &argv[3];
-	  nURL = atoi(argc)-2;
+	  nURL = argc-2;
   }
   
   // Process the arguments
