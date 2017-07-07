@@ -91,7 +91,7 @@ void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
   if(_urlArray[_headURL]._i <500) {
-    _urlArray[_headURL]._description[_headURL]._i++];
+    _urlArray[_urlArray[_headURL]._i++] = c;
   }
   findWord(c);
 }
