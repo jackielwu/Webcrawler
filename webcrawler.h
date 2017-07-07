@@ -56,10 +56,10 @@ class WebCrawler: public SimpleHTMLParser {
   void writeWordFile(const char *wordFileName);
 
   // Add any other objects you may need
-  
-  int main(int argc, char **argv);
-  
-  void printUsage();
 };
+
+int main(int argc, char **argv);
+  
+void printUsage();
 
 
