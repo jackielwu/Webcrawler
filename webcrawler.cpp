@@ -97,10 +97,12 @@ void WebCrawler::onContentFound(char c) {
   findWord(c);
 }
 
-void WebCrawler::onAnchorFound(char * url) {
+void WebCrawler::onAnchorFound(char * url)
+{
   if(_tailURL < _maxURLs)
   {
-  	if(url[0] != '#') {
+  	if(url[0] != '#')
+  	{
   		std::string u(url);
   		if(u.find("http") == 0) {
   			_urlArray[_tailURL]._url = url;
@@ -110,11 +112,13 @@ void WebCrawler::onAnchorFound(char * url) {
   			u.insert(0, '/');//handle separation for relative links
   			u.insert(0, _urlArray[_headURL]._url);
   			_urlArray[_tailURL++]._url = u.c_str();
-    }
-  }
+  		}
+  	}
+	}
 }
 
-void WebCrawler::findWord(char c) {
+void WebCrawler::findWord(char c)
+{
    
   if(c != ' ') {
     //put in string
