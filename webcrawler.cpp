@@ -121,7 +121,7 @@ void WebCrawler::findWord(char c)
    
   if(c != ' ') {
     //put in string
-    temp.append((const char *)c);
+    temp += c;
   }
   else {
     //put string into word
