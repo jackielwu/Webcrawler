@@ -4,8 +4,8 @@
 #include "HashTableTemplate.h"
 #include "SimpleHTMLParser.h"
 #include <string.h>
-#include <fstream.h>
-#include <iostream.h>
+#include <fstream>
+#include <iostream>
 
 // Stores a URL and the first 100 words
 struct URLRecord {
