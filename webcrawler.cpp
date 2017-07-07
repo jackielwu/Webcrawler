@@ -51,7 +51,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	ofstream file;
 	file.open(urlFileName);
 	//Iterator
-	if(file.is_Open()) {
+	if(file.is_open()) {
 		HashTableTemplateIterator<int> iterator(_urlToUrlRecord);
 		const char * key;
 		int index;
@@ -70,7 +70,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	ofstream file;
 	file.open(wordFileName);
 	//Iterator
-	if(file.is_Open()) {
+	if(file.is_open()) {
 		HashTableTemplateIterator<URLRecordList *> iterator(_wordToURLRecordList);
 		const char * key;
 		URLRecordList *e;
