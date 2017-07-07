@@ -127,7 +127,7 @@ void WebCrawler::findWord(char c)
     //put string into word
     const char *word = temp.c_str();
     URLRecordList *e;
-    URLRecordList n = new URLRecordList;
+    URLRecordList *n = new URLRecordList;
 		n->_urlRecordIndex = _headURL;
     if(_wordToUrlRecordList.find(word, &e)) {
     	if(e->_urlRecordIndex != _headURL) {
