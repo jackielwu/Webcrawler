@@ -73,7 +73,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	if(file.is_Open()) {
 		HashTableTemplateIterator<URLRecordList> iterator(_uwordToUrlRecordList);
 		const char * key;
-		URLRecordList e;
+		URLRecordList *e;
 		while (iterator.next(key, e)) {
 		  file << key;
 		  while(e->_next != NULL) {
@@ -91,7 +91,7 @@ void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
   if(_urlArray[_headURL]._i <500) {
-    _urlArray[_urlArray[_headURL]._i++] = c;
+    _urlArray[_headURL].description[_urlArray[_headURL]._i++] = c;
   }
   findWord(c);
 }
@@ -105,7 +105,7 @@ void WebCrawler::onAnchorFound(char * url)
   		string u(url);
   		if(u.find("http") == 0) {
   			_urlArray[_tailURL]._url = url;
-  			_urlToUrlRecord.insert(url, _tailURL	);
+  			_urlToUrlRecord->insert(url, _tailURL	);
   		}
   		else if(u.find("http") == string::npos) {
   			u.insert(0, "/");//handle separation for relative links
@@ -129,14 +129,14 @@ void WebCrawler::findWord(char c)
     URLRecordList *e;
     URLRecordList *n = new URLRecordList;
 		n->_urlRecordIndex = _headURL;
-    if(_wordToURLRecordList.find(word, &e)) {
+    if(_wordToURLRecordList->find(word, &e)) {
     	if(e->_urlRecordIndex != _headURL) {
     		e->_next = n;
     		n->_next = NULL;
     	}
     }
     else {
-    	_wordToURLRecordList.insertItem(word, n);
+    	_wordToURLRecordList->insertItem(word, n);
 		}
 	}
 }
