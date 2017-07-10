@@ -58,7 +58,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	file = fopen(urlFileName,"w");
 	for (int i=0;i<_tailURL;i++) {
 		fprintf(file,"%d %s\n", i, _urlArray[i]._url);
-		printf("%s\n", _urlArray[i]._description);
+		//printf("%s\n", _urlArray[i]._description);
 		fprintf(file,"%s\n\n",_urlArray[i]._description);
 	}
 	fclose(file);
@@ -184,7 +184,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 				state = TAG;
 				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
-				printf("%d %s\n",_headURL, title);
+				printf("%d %s\n",_headURL-1, title);
 				_urlArray[_headURL-1]._description = strdup(title);
 				//printf("\n");
 			}
