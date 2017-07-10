@@ -40,7 +40,7 @@ class WebCrawler: public SimpleHTMLParser {
   
   void onContentFound(char c);
   
-  //void findWord(char c);
+  void findWord(char c);
 
  public:
   // Create a web crawler object with the initial urls
