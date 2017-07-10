@@ -6,7 +6,7 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 {
 	_maxUrls = maxUrls;
 	_urlArray = new URLRecord[_maxUrls];
-	//_urlToUrlRecord = new HashTableTemplate<int>();
+	_urlToUrlRecord = new HashTableTemplate<int>();
 	//_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 	_headURL = 0;
 	_tailURL = 0;
@@ -112,7 +112,7 @@ void WebCrawler::onAnchorFound(char * url)
   	{
   		string u(url);
   		if(u.find("http") == 0) {
-  			_urlArray[_tailURL]._url = url;
+  			_urlArray[_tailURL]._url = strdup(url);
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   		}
   		else if(u.find("http") == string::npos) {
