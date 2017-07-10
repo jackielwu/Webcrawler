@@ -24,6 +24,7 @@ void WebCrawler::crawl()
 {
 	while(_headURL < _tailURL)
 	{
+		printf("crawl\n");
 		//Fetch the next URL is _headURL
 		int n;
 		char * buffer = fetchHTML(_urlArray[_headURL]._url, &n);
