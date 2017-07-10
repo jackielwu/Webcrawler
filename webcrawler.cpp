@@ -113,7 +113,7 @@ void WebCrawler::onAnchorFound(char * url)
   	{
   		string u(url);
   		if(u.find("http") == 0) {
-  			printf("%s\n", url);
+  			printf("%d %s\n",_tailURL, url);
   			_urlArray[_tailURL]._url = strdup(url);
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   			_tailURL++;
