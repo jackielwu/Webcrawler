@@ -68,6 +68,23 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 }
 void WebCrawler::writeWordFile(const char *wordFileName)
 {
+	FILE *file;
+	int n;
+	file = fopen(wordFileName,"w");
+	HashTableTemplateIterator<URLRecordList *> iterator(_wordToURLRecordList);
+	const char *key;
+	URLRecordList *e;
+	while(iterator.next(key,e)) {
+		printf("%s\n",key);
+		fprintf(file,"%s", key);
+		while(e->_next != NULL) {
+			fprintf(file," %s", e->_urlRecordIndex);
+			e=e->_next;
+		}
+		fprintf(file,"\n");
+	}
+	fclose(file);
+	return;
 	/*ofstream file;
 	file.open(wordFileName);
 	//Iterator
@@ -184,7 +201,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 				state = TAG;
 				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
-				printf("%d %s\n",_headURL-1, title);
+				//printf("%d %s\n",_headURL-1, title);
 				_urlArray[_headURL-1]._description = strdup(title);
 				//printf("\n");
 			}
@@ -250,7 +267,7 @@ int main( int argc, char ** argv )
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
 	  wc.writeURLFile("url.txt");
-	  //wc.writeWordFile("word.txt");
+	  wc.writeWordFile("word.txt");
 	}
 
   if ( *argv == NULL ) {
