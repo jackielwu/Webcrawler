@@ -65,7 +65,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 }
 void WebCrawler::writeWordFile(const char *wordFileName)
 {
-	ofstream file;
+	/*ofstream file;
 	file.open(wordFileName);
 	//Iterator
 	if(file.is_open()) {
@@ -82,7 +82,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 		file.close();
 	}
 	else cout << "Unable to open file\n";
-	return;
+	return;*/
 }
 
 void WebCrawler::onContentFound(char c) {
