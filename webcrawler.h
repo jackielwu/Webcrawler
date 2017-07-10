@@ -38,6 +38,8 @@ class WebCrawler: public SimpleHTMLParser {
   void onContentFound(char c);
   
   void findWord(char c);
+  
+  void findTitle(char *buffer, int n);
 
  public:
   // Create a web crawler object with the initial urls
