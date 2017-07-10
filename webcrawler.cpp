@@ -37,6 +37,8 @@ void WebCrawler::crawl()
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
 		findTitle(buffer, n);
+		
+		
 		parse(buffer, n);
 		
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
@@ -116,7 +118,7 @@ void WebCrawler::onAnchorFound(char * url)
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   			_tailURL++;
   		}
-  		/*else if(u.find("http") == string::npos) {
+  		/*else {
   			//u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[0]._url);
   			_urlArray[_tailURL++]._url = (char *)u.c_str();
@@ -245,7 +247,7 @@ int main( int argc, char ** argv )
   
   if ( !strcmp(option,"") ) {
 	  // default 1000 maxURLs
-	  maxURL = 100;
+	  maxURL = 1000;
 	  nURL = 1;
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
