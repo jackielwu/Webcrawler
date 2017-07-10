@@ -184,7 +184,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 				state = TAG;
 				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
-				printf("%s\n",title);
+				printf("%d %s\n",_headURL, title);
 				_urlArray[_headURL]._description = strdup(title);
 				//printf("\n");
 			}
