@@ -37,7 +37,7 @@ void WebCrawler::crawl()
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
 		findTitle(buffer, n);
-		//parse(buffer, n);
+		parse(buffer, n);
 		
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
 		//Only insert up to _maxURL entries
