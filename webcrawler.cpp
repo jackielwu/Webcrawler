@@ -110,7 +110,7 @@ void WebCrawler::onAnchorFound(char * url)
 	printf("%s\n", url);
   if(_tailURL < _maxUrls)
   {
-  	//if(url[0] != '#')
+  	if(url[0] != '#')
   	{
   		string u(url);
   		//if(u.find("http") == 0) {
