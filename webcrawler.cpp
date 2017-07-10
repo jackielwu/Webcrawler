@@ -51,6 +51,7 @@ void WebCrawler::crawl()
 
 void WebCrawler::writeURLFile(const char * urlFileName)
 {
+	printf("write\n");
 	ofstream file;
 	file.open(urlFileName);
 	//Iterator
@@ -107,6 +108,7 @@ void WebCrawler::onContentFound(char c) {
 
 void WebCrawler::onAnchorFound(char * url)
 {
+	printf("%s\n", url);
   if(_tailURL < _maxUrls)
   {
   	if(url[0] != '#')
