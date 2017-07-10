@@ -153,6 +153,8 @@ void WebCrawler::findWord(char c)
 
 void WebCrawler::findTitle(char *buffer, int n)
 {
+	int titleLength;
+	char title[MaxURLLength];
 	enum { START, TAG, TITLE} state;
 
 	state = START;
@@ -180,7 +182,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 					lastCharSpace = true;
 				}
 				else {
-					onContentFound(c);
+					//onContentFound(c);
 					lastCharSpace = false;
 				}
 				
@@ -191,7 +193,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 		case TITLE: {
 			if (match(&b,"href=\"")) {
 				state = TEXT;
-				urlAnchorLength=0;
+				titleLength=0;
 				//printf("href=");
 			}
 			else if (match(&b,"<")) {
@@ -208,15 +210,15 @@ void WebCrawler::findTitle(char *buffer, int n)
 			if (match(&b,"\"")) {
 				// Found ending "
 				state = TITLE;
-				urlAnchor[urlAnchorLength] = '\0';
+				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
-				_urlArray[_headURL]._description = strdup(urlAnchor);
+				_urlArray[_headURL]._description = strdup(title);
 				//printf("\n");
 			}
 			else {
-				if ( urlAnchorLength < MaxURLLength-1) {
-					urlAnchor[urlAnchorLength] = *b;
-					urlAnchorLength++;
+				if ( titleLength < MaxURLLength-1) {
+					title[titleLength] = *b;
+					titleLength++;
 				}
 				//printf("%c", *b, *b);
 				b++;
