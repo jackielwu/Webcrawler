@@ -3,7 +3,7 @@
 
 #include "HashTableTemplate.h"
 #include "SimpleHTMLParser.h"
-#include <string>
+#include <string.h>
 #include <stdio.h>
 
 // Stores a URL and the first 100 words
@@ -26,7 +26,8 @@ class WebCrawler: private SimpleHTMLParser {
   URLRecord * _urlArray;   // Array of URLs 
   int _headURL;            // Points to the next URL to scan by the web crawler
   int _tailURL;            // Next position unused in the urlArray
-	std::string temp;
+	int tempLength=0;
+	char temp[MaxURLLength];
   HashTableTemplate<int> * _urlToUrlRecord;         //  maps a URL to its index in the URLArray 
   
   HashTableTemplate<URLRecordList *> *_wordToURLRecordList; // maps a word to a list of URLs

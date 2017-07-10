@@ -109,7 +109,7 @@ void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
   if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' '||c=='\'') {
-  	findWord(c);
+  	//findWord(c);
   }/*
   else {
   	temp+='\0';
@@ -146,17 +146,18 @@ void WebCrawler::onAnchorFound(char * url)
 
 void WebCrawler::findWord(char c)
 {
-   
+  
   if(c != ' ') {
     //put in string
     //printf("%c",c);
-    temp += c;
+    temp[tempLength++]=c;
   }
   else {
     //put string into word
-    temp+='\0';
-    const char *word = temp.c_str();
-    //printf("%s\n",word);
+    temp[tempLength]='\0'
+    const char *word = strdup(temp);
+    tempLength=0;
+    printf("%s\n",word);
     URLRecordList *e;
     URLRecordList *n = new URLRecordList;
 		n->_urlRecordIndex = _headURL;
