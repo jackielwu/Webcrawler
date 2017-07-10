@@ -26,7 +26,7 @@ class WebCrawler: private SimpleHTMLParser {
   URLRecord * _urlArray;   // Array of URLs 
   int _headURL;            // Points to the next URL to scan by the web crawler
   int _tailURL;            // Next position unused in the urlArray
-	int tempLength=0;
+	int tempLength;
 	char temp[MaxURLLength];
   HashTableTemplate<int> * _urlToUrlRecord;         //  maps a URL to its index in the URLArray 
   
