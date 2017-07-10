@@ -10,7 +10,7 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 	_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 	_headURL = 0;
 	_tailURL = 0;
-	//temp = new std::string();
+	temp();
 	for(int i=0;i<nurlRoots;i++)
 	{
 	  URLRecord *e = new URLRecord;
@@ -92,7 +92,7 @@ void WebCrawler::onContentFound(char c) {
   	temp += c;
   }
   else {
-  	//temp+='\0';
+  	temp+='\0';
   	printf("%s\n",temp.c_str());
   	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
