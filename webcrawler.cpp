@@ -160,9 +160,9 @@ void WebCrawler::findWord(char c)
     printf("%s\n",word);
     URLRecordList *e;
     URLRecordList *n = new URLRecordList;
-		n->_urlRecordIndex = _headURL;
+		n->_urlRecordIndex = _headURL-1;
     if(_wordToURLRecordList->find(word, &e)) {
-    	if(e->_urlRecordIndex != _headURL) {
+    	if(e->_urlRecordIndex != _headURL-1) {
     		e->_next = n;
     		n->_next = NULL;
     	}
