@@ -99,7 +99,8 @@ void WebCrawler::onContentFound(char c) {
   }
   else {
   	//printf("%s\n", temp.c_str());
-  	_urlArray[_headURL]._description = strdup(temp.c_str());
+  	temp+='\0';
+  	_urlArray[_headURL]._description = strdup(temp);
   	temp.clear();
   }
   //findWord(c);
@@ -122,6 +123,7 @@ void WebCrawler::onAnchorFound(char * url)
   			u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[_headURL]._url);
   			_urlArray[_tailURL++]._url = (char *)u.c_str();
+  			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
   			printf("%s\n", _urlArray[_tailURL-1]._url);
   		}*/
   	}
