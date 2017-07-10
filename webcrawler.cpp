@@ -52,7 +52,15 @@ void WebCrawler::crawl()
 void WebCrawler::writeURLFile(const char * urlFileName)
 {
 	printf("%d\n", _tailURL);
-	ofstream file;
+	FILE *file;
+	int n;
+	file = fopen(urlFileName,"w");
+	for (int i=0;i<_tailURL;i++) {
+		fprintf(file,"%d %s\n", i, _urlArray[i]._url);
+		fprintf(file,"%s\n\n",_urlArray[i]._description);
+	}
+	fclose(file);
+	/*ofstream file;
 	file.open(urlFileName);
 	//Iterator
 	if(file.is_open()) {
@@ -64,7 +72,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 		}
 		file.close();
 	}
-	else cout << "Unable to open file\n";
+	else cout << "Unable to open file\n";*/
 	return;
 }
 void WebCrawler::writeWordFile(const char *wordFileName)

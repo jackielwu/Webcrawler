@@ -4,6 +4,7 @@
 #include "HashTableTemplate.h"
 #include "SimpleHTMLParser.h"
 #include <string.h>
+#include <stdio.h>
 #include <fstream>
 #include <iostream>
 
