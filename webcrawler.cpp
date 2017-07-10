@@ -149,7 +149,7 @@ void WebCrawler::findWord(char c)
    
   if(c != ' ') {
     //put in string
-    printf("%c",c);
+    //printf("%c",c);
     temp += c;
   }
   else {
