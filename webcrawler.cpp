@@ -122,6 +122,7 @@ void WebCrawler::onAnchorFound(char * url)
   			u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[_headURL]._url);
   			_urlArray[_tailURL++]._url = (char *)u.c_str();
+  			printf("%s\n", _urlArray[_tailURL-1]._url);
   		}
   	}
 	}
