@@ -191,25 +191,9 @@ void WebCrawler::findTitle(char *buffer, int n)
 			break;
 		}
 		case TITLE: {
-			if (match(&b,"href=\"")) {
-				state = TEXT;
-				titleLength=0;
-				//printf("href=");
-			}
-			else if (match(&b,"<")) {
-				// End script
-				state = START;
-			}
-			else {
-				b++;
-			}
-			break;
-				
-		}
-		case TEXT: {
-			if (match(&b,"\"")) {
+			if (match(&b,"<")) {
 				// Found ending "
-				state = TITLE;
+				state = TAG;
 				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
 				_urlArray[_headURL]._description = strdup(title);
@@ -224,6 +208,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 				b++;
 			}
 			break;
+				
 		}
 		case TAG: {
 			if (match(&b, ">")) {
