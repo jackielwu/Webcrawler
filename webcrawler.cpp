@@ -108,13 +108,13 @@ void WebCrawler::onAnchorFound(char * url)
 	printf("%s\n", url);
   if(_tailURL < _maxUrls)
   {
-  	if(url[0] != '#')
+  	//if(url[0] != '#')
   	{
   		string u(url);
-  		if(u.find("http") == 0) {
+  		//if(u.find("http") == 0) {
   			_urlArray[_tailURL]._url = strdup(url);
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
-  		}
+  		//}
   		/*else if(u.find("http") == string::npos) {
   			u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[_headURL]._url);
