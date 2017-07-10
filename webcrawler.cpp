@@ -36,7 +36,7 @@ void WebCrawler::crawl()
 		}
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
-		//findTitle(buffer, n);
+		findTitle(buffer, n);
 		parse(buffer, n);
 		
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
@@ -59,7 +59,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	for (int i=0;i<_tailURL;i++) {
 		fprintf(file,"%d %s\n", i, _urlArray[i]._url);
 		//printf("%s\n", _urlArray[i]._description);
-		//fprintf(file,"%s\n\n",_urlArray[i]._description);
+		fprintf(file,"%s\n\n",_urlArray[i]._description);
 	}
 	fclose(file);
 	return;
