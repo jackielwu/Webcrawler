@@ -100,7 +100,7 @@ void WebCrawler::onContentFound(char c) {
   else {
   	//printf("%s\n", temp.c_str());
   	temp+='\0';
-  	_urlArray[_headURL]._description = strdup(temp);
+  	_urlArray[_headURL]._description = strdup((const char*)temp);
   	temp.clear();
   }
   //findWord(c);
