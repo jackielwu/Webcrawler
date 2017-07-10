@@ -36,7 +36,8 @@ void WebCrawler::crawl()
 		}
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
-		parse(buffer, n);
+		
+		//parse(buffer, n);
 		
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
 		//Only insert up to _maxURL entries
@@ -147,6 +148,93 @@ void WebCrawler::findWord(char c)
     else {
     	_wordToURLRecordList->insertItem(word, n);
 		}
+	}
+}
+
+void WebCrawler::findTitle(char *buffer, int n)
+{
+	enum { START, TAG, TITLE} state;
+
+	state = START;
+	
+	char * bufferEnd = buffer + n;
+	char * b = buffer;
+	bool lastCharSpace = false;
+	while (b < bufferEnd) {
+		//printf("<%c,%d,%d>", *b, *b,state);
+		switch (state) {
+		case START: {
+			if (match(&b,"<title>")) {
+				state = TITLE;
+			}
+			else if	(match(&b,"<")) {
+				state = TAG;
+			}
+			else {
+				char c = *b;
+				//Substitute one or more blank chars with a single space
+				if (c=='\n'||c=='\r'||c=='\t'||c==' ') {
+					if (!lastCharSpace) {
+						onContentFound(' ');
+					}
+					lastCharSpace = true;
+				}
+				else {
+					onContentFound(c);
+					lastCharSpace = false;
+				}
+				
+				b++;
+			}
+			break;
+		}
+		case TITLE: {
+			if (match(&b,"href=\"")) {
+				state = TEXT;
+				urlAnchorLength=0;
+				//printf("href=");
+			}
+			else if (match(&b,"<")) {
+				// End script
+				state = START;
+			}
+			else {
+				b++;
+			}
+			break;
+				
+		}
+		case TEXT: {
+			if (match(&b,"\"")) {
+				// Found ending "
+				state = TITLE;
+				urlAnchor[urlAnchorLength] = '\0';
+				//onAnchorFound(urlAnchor);
+				_urlArray[_headURL]._description = strdup(urlAnchor);
+				//printf("\n");
+			}
+			else {
+				if ( urlAnchorLength < MaxURLLength-1) {
+					urlAnchor[urlAnchorLength] = *b;
+					urlAnchorLength++;
+				}
+				//printf("%c", *b, *b);
+				b++;
+			}
+			break;
+		}
+		case TAG: {
+			if (match(&b, ">")) {
+				state = START;
+			}
+			else {
+				b++;
+			}
+			break;
+		}
+		default:;
+		}
+		
 	}
 }
 
