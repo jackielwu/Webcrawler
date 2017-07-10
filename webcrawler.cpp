@@ -91,11 +91,9 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
-  /*if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' '||c=='.') {
-  	if(temp.length() < 500) {
-  		temp += c;
-  	}
-  }
+  if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' '||c=='.'||c=='\'') {
+  	findWord(c);
+  }/*
   else {
   	temp+='\0';
   	//printf("%s\n",temp.c_str());
@@ -247,7 +245,7 @@ int main( int argc, char ** argv )
   
   if ( !strcmp(option,"") ) {
 	  // default 1000 maxURLs
-	  maxURL = 100;
+	  maxURL = 10;
 	  nURL = 1;
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
