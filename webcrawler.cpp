@@ -58,7 +58,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	if(file.is_open()) {
 		for (int i=0;i<_tailURL;i++) {
 		  file << i << " " << _urlArray[i]._url << "\n";
-		  printf("%s\n","hi");
+		  printf("%s\n",_urlArray[i]._description);
 		  file << _urlArray[i]._description << "\n";
 		  file << "\n"; 
 		}
@@ -92,9 +92,6 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
-  /*if(_urlArray[_headURL]._i <500) {
-    _urlArray[_headURL]._description[_urlArray[_headURL]._i++] = c;
-  }*/
   if(temp.length() < 500) {
   	temp += c;
   }
