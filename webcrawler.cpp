@@ -184,7 +184,7 @@ int main( int argc, char ** argv )
   
   if ( !strcmp(option,"") ) {
 	  // default 1000 maxURLs
-	  maxURL = 10;
+	  maxURL = 100;
 	  nURL = 1;
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
