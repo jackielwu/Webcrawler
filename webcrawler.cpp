@@ -98,7 +98,7 @@ void WebCrawler::onContentFound(char c) {
   else {
   	//printf("%s\n", temp.c_str());
   	temp+='\0';
-  	printf(temp);
+  	printf("%s\n",temp.c_str());
   	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
   }
