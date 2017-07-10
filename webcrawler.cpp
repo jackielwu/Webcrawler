@@ -166,11 +166,11 @@ void WebCrawler::findWord(char c)
     		//printf("%s\n",_wordToURLRecordList->_key);
     		e->_next = n;
     		n->_next = NULL;
-    	}*/
-    //}
+    	}
+    }
     else {
     	_wordToURLRecordList->insertItem(word, n);
-		}
+		}*/
 	}
 }
 
