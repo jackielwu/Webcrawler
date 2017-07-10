@@ -181,7 +181,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 			break;
 		}
 		case TITLE: {
-			if (match(&b,"<")) {
+			if (match(&b,"</title>")) {
 				// Found ending "
 				state = TAG;
 				title[titleLength] = '\0';
