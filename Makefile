@@ -12,4 +12,4 @@ git-commit:
 	git commit -a -m "Commit web-crawler" >> .local.git.out
 
 clean:
-	rm -f *.o gethttp core
+	rm -f *.o gethttp core webcrawl
