@@ -98,6 +98,7 @@ void WebCrawler::onContentFound(char c) {
   	temp += c;
   }
   else {
+  	_urlArray[_headURL]._description = strdup(temp);
   	temp.clear();
   }
   //findWord(c);
