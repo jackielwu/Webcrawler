@@ -87,7 +87,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
-  if(c>='a'&&c<='z' || c>='A'&&c<='Z') {
+  if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' ') {
   	if(temp.length() < 500) {
   		temp += c;
   	}
