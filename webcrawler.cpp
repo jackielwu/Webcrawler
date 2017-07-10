@@ -89,17 +89,17 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
-  if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' '||c=='.') {
+  /*if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' '||c=='.') {
   	if(temp.length() < 500) {
   		temp += c;
   	}
   }
   else {
   	temp+='\0';
-  	printf("%s\n",temp.c_str());
+  	//printf("%s\n",temp.c_str());
   	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
-  }
+  }*/
   //findWord(c);
 }
 
