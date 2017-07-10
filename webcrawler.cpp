@@ -10,7 +10,7 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 	_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 	_headURL = 0;
 	_tailURL = 0;
-	temp = new std::string();
+	//temp = new std::string();
 	for(int i=0;i<nurlRoots;i++)
 	{
 	  URLRecord *e = new URLRecord;
