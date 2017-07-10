@@ -149,13 +149,14 @@ void WebCrawler::findWord(char c)
    
   if(c != ' ') {
     //put in string
+    printf("%c",c);
     temp += c;
   }
   else {
     //put string into word
     temp+='\0';
     const char *word = temp.c_str();
-    printf("%s\n",word);
+    //printf("%s\n",word);
     URLRecordList *e;
     URLRecordList *n = new URLRecordList;
 		n->_urlRecordIndex = _headURL;
