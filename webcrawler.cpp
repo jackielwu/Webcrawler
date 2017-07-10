@@ -51,7 +51,7 @@ void WebCrawler::crawl()
 
 void WebCrawler::writeURLFile(const char * urlFileName)
 {
-	printf("write\n");
+	printf("%s\n", urlFileName);
 	ofstream file;
 	file.open(urlFileName);
 	//Iterator
