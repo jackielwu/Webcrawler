@@ -85,24 +85,6 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	}
 	fclose(file);
 	return;
-	/*ofstream file;
-	file.open(wordFileName);
-	//Iterator
-	if(file.is_open()) {
-		HashTableTemplateIterator<URLRecordList *> iterator(_wordToURLRecordList);
-		const char * key;
-		URLRecordList *e;
-		while (iterator.next(key, e)) {
-		  file << key;
-		  while(e->_next != NULL) {
-		  	file << " " << e->_urlRecordIndex;
-			}
-			file << "\n";
-		}
-		file.close();
-	}
-	else cout << "Unable to open file\n";
-	return;*/
 }
 
 void WebCrawler::onContentFound(char c) {
@@ -272,7 +254,7 @@ int main( int argc, char ** argv )
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
 	  wc.writeURLFile("url.txt");
-	  wc.writeWordFile("word.txt");
+	  //wc.writeWordFile("word.txt");
 	}
 
   if ( *argv == NULL ) {
