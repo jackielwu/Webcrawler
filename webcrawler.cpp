@@ -92,10 +92,16 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
-  if(_urlArray[_headURL]._i <500) {
+  /*if(_urlArray[_headURL]._i <500) {
     _urlArray[_headURL]._description[_urlArray[_headURL]._i++] = c;
+  }*/
+  if(strlen(temp) < 500) {
+  	temp += c;
   }
-  findWord(c);
+  else {
+  	temp.clear();
+  }
+  //findWord(c);
 }
 
 void WebCrawler::onAnchorFound(char * url)
@@ -179,7 +185,7 @@ int main( int argc, char ** argv )
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
 	  wc.writeURLFile("url.txt");
-	  wc.writeWordFile("word.txt");
+	  //wc.writeWordFile("word.txt");
 	}
 
   if ( *argv == NULL ) {

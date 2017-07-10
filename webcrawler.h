@@ -13,7 +13,7 @@ using namespace std;
 struct URLRecord {
   char * _url;          // URL of the document.
   char * _description;  // First 100 words of the document without tags
-  int _i;
+  //int _i;
 };
 
 // Used to implement a list of URL indexes of the url array.
@@ -40,7 +40,7 @@ class WebCrawler: public SimpleHTMLParser {
   
   void onContentFound(char c);
   
-  void findWord(char c);
+  //void findWord(char c);
 
  public:
   // Create a web crawler object with the initial urls
