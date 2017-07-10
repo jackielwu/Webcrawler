@@ -106,7 +106,7 @@ void WebCrawler::onAnchorFound(char * url)
   {
   	if(url[0] != '#')
   	{
-  		string u(url);
+  		std::string u(url);
   		if(u.find("http") == 0) {
   			printf("%d %s\n",_tailURL, url);
   			_urlArray[_tailURL]._url = strdup(url);
