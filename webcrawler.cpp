@@ -109,7 +109,7 @@ void WebCrawler::onContentFound(char c) {
   //default gethttp
   //printf("%c", c);
   if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' '||c=='\'') {
-  	//findWord(c);
+  	findWord(c);
   }/*
   else {
   	temp+='\0';
