@@ -114,7 +114,7 @@ void WebCrawler::onAnchorFound(char * url)
   			_tailURL++;
   		}
   		else if(u.find("http") == string::npos) {
-  			u.insert(0, "/");//handle separation for relative links
+  			//u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[0]._url);
   			_urlArray[_tailURL++]._url = (char *)u.c_str();
   			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
