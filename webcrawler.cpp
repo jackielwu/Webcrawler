@@ -95,7 +95,7 @@ void WebCrawler::onContentFound(char c) {
   /*if(_urlArray[_headURL]._i <500) {
     _urlArray[_headURL]._description[_urlArray[_headURL]._i++] = c;
   }*/
-  if(strlen(temp) < 500) {
+  if(temp.length() < 500) {
   	temp += c;
   }
   else {
