@@ -58,7 +58,7 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	if(file.is_open()) {
 		for (int i=0;i<_tailURL;i++) {
 		  file << i << " " << _urlArray[i]._url << "\n";
-		  //file << _urlArray[i]._description << "\n";
+		  file << _urlArray[i]._description << "\n";
 		  file << "\n"; 
 		}
 		file.close();
@@ -186,7 +186,7 @@ int main( int argc, char ** argv )
   
   if ( !strcmp(option,"") ) {
 	  // default 1000 maxURLs
-	  maxURL = 500;
+	  maxURL = 100;
 	  nURL = 1;
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
