@@ -95,11 +95,10 @@ void WebCrawler::onContentFound(char c) {
   if(temp.length() < 500) {
   	temp += c;
   }
-  else if(_headURL ==13)
-  {;}
   else {
   	//printf("%s\n", temp.c_str());
   	temp+='\0';
+  	printf(temp);
   	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
   }
