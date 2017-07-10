@@ -154,7 +154,7 @@ void WebCrawler::findWord(char c)
   }
   else {
     //put string into word
-    temp[tempLength]='\0'
+    temp[tempLength]='\0';
     const char *word = strdup(temp);
     tempLength=0;
     printf("%s\n",word);
