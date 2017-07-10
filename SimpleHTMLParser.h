@@ -10,9 +10,9 @@ class SimpleHTMLParser {
 	int urlAnchorLength;
 	char urlAnchor[MaxURLLength];
 	
-	bool match(char **b, const char *m);
  public:
 	SimpleHTMLParser();
+	bool match(char **b, const char *m);
 	
 	bool parse(char * buffer, int n);
 
