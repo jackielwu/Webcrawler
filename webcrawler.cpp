@@ -108,18 +108,18 @@ void WebCrawler::onAnchorFound(char * url)
   	{
   		string u(url);
   		if(u.find("http") == 0) {
-  			printf("%d %s\n",_tailURL, url);
+  			//printf("%d %s\n",_tailURL, url);
   			_urlArray[_tailURL]._url = strdup(url);
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   			_tailURL++;
   		}
-  		else if(u.find("http") == string::npos) {
+  		/*else if(u.find("http") == string::npos) {
   			//u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[0]._url);
   			_urlArray[_tailURL++]._url = (char *)u.c_str();
   			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
   			//printf("%s\n", _urlArray[_tailURL-1]._url);
-  		}
+  		}*/
   	}
 	}
 }
