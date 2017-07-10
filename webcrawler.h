@@ -26,7 +26,7 @@ class WebCrawler: public SimpleHTMLParser {
   URLRecord * _urlArray;   // Array of URLs 
   int _headURL;            // Points to the next URL to scan by the web crawler
   int _tailURL;            // Next position unused in the urlArray
-	string temp;
+	std::string temp;
   HashTableTemplate<int> * _urlToUrlRecord;         //  maps a URL to its index in the URLArray 
   
   HashTableTemplate<URLRecordList *> *_wordToURLRecordList; // maps a word to a list of URLs
