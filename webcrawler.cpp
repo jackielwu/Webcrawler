@@ -60,19 +60,6 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 		fprintf(file,"%s\n\n",_urlArray[i]._description);
 	}
 	fclose(file);
-	/*ofstream file;
-	file.open(urlFileName);
-	//Iterator
-	if(file.is_open()) {
-		for (int i=0;i<_tailURL;i++) {
-		  file << i << " " << _urlArray[i]._url << "\n";
-		  //printf("%s\n",_urlArray[i]._description);
-		  file << _urlArray[i]._description << "\n";
-		  file << "\n"; 
-		}
-		file.close();
-	}
-	else cout << "Unable to open file\n";*/
 	return;
 }
 void WebCrawler::writeWordFile(const char *wordFileName)
@@ -106,7 +93,7 @@ void WebCrawler::onContentFound(char c) {
   else {
   	//printf("%s\n", temp.c_str());
   	temp+='\0';
-  	printf("%s\n",temp.c_str());
+  	//printf("%s\n",temp.c_str());
   	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
   }
@@ -126,13 +113,13 @@ void WebCrawler::onAnchorFound(char * url)
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   			_tailURL++;
   		}
-  		/*else if(u.find("http") == string::npos) {
+  		else if(u.find("http") == string::npos) {
   			u.insert(0, "/");//handle separation for relative links
   			u.insert(0, _urlArray[_headURL]._url);
   			_urlArray[_tailURL++]._url = (char *)u.c_str();
   			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
   			printf("%s\n", _urlArray[_tailURL-1]._url);
-  		}*/
+  		}
   	}
 	}
 }
