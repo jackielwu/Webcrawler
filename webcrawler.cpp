@@ -57,8 +57,8 @@ void WebCrawler::writeURLFile(const char * urlFileName)
 	//Iterator
 	if(file.is_open()) {
 		for (int i=0;i<_tailURL;i++) {
-		  file << i << " " << (char *)_urlArray[index]._url << "\n";
-		  file << (char *)_urlArray[index]._description << "\n";
+		  file << i << " " << _urlArray[index]._url << "\n";
+		  file << _urlArray[index]._description << "\n";
 		  file << "\n"; 
 		}
 		file.close();
