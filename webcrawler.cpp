@@ -97,7 +97,7 @@ void WebCrawler::onContentFound(char c) {
   else {
   	temp+='\0';
   	printf("%s\n",temp.c_str());
-  	_urlArray[_headURL-1]._description = strdup(temp.c_str());
+  	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
   }
   //findWord(c);
@@ -185,7 +185,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
 				printf("%d %s\n",_headURL, title);
-				_urlArray[_headURL]._description = strdup(title);
+				_urlArray[_headURL-1]._description = strdup(title);
 				//printf("\n");
 			}
 			else {
