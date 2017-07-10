@@ -3,7 +3,7 @@
 
 #include "HashTableTemplate.h"
 #include "SimpleHTMLParser.h"
-#include <string.h>
+#include <string>
 #include <stdio.h>
 
 // Stores a URL and the first 100 words
