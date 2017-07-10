@@ -98,7 +98,7 @@ void WebCrawler::onContentFound(char c) {
   	temp += c;
   }
   else {
-  	printf("%s\n", temp.c_str());
+  	//printf("%s\n", temp.c_str());
   	_urlArray[_headURL]._description = strdup(temp.c_str());
   	temp.clear();
   }
@@ -184,7 +184,7 @@ int main( int argc, char ** argv )
   
   if ( !strcmp(option,"") ) {
 	  // default 1000 maxURLs
-	  maxURL = 100;
+	  maxURL = 1000;
 	  nURL = 1;
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
