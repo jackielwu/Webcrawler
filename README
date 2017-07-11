@@ -1,5 +1,5 @@
 Name: Jackie Wu
 Login: wu891
 Working features: url.txt word.txt
-Nonworking features: none
+Nonworking features: cli argv not tested for multiple urls. Seg fault: ./webcrawl https://www.cs.purdue.edu/ https://www.yahoo.com/.
 Extra features: none
