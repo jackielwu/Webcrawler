@@ -143,7 +143,7 @@ void WebCrawler::findWord(char c)
     URLRecordList *e;
     URLRecordList *n;
 		e->_urlRecordIndex = _headURL-1;
-    if(_wordToURLRecordList->find(word, e)) {
+    if(_wordToURLRecordList->find(word, &e)) {
     		//printf("%s\n",_wordToURLRecordList->_key);
     	n=e;
     	while(n != NULL) {
@@ -159,7 +159,7 @@ void WebCrawler::findWord(char c)
     }
     else {
     	n = new URLRecordList;
-    	n->_urlRecordIndex = _headURL-1;
+    	n->_urlRecordIndex = headURL-1;
     	_wordToURLRecordList->insertItem(word, n);
 		}
 	}
