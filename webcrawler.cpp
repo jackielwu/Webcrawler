@@ -265,7 +265,7 @@ int main( int argc, char ** argv )
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
 	  wc.writeURLFile("url.txt");
-	  //wc.writeWordFile("word.txt");
+	  wc.writeWordFile("word.txt");
 	}
 
   if ( *argv == NULL ) {
