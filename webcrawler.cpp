@@ -126,7 +126,7 @@ void WebCrawler::onAnchorFound(char * url)
 
 void WebCrawler::findWord(char c)
 {
-  
+  tempLength=0;
   if(c != ' ') {
     //put in string
     //printf("%c",c);
@@ -167,7 +167,7 @@ void WebCrawler::findWord(char c)
 
 void WebCrawler::findTitle(char *buffer, int n)
 {
-	int titleLength;
+	int titleLength=0;
 	char title[MaxURLLength];
 	enum { START, TAG, TITLE, END} state;
 
