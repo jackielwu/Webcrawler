@@ -161,6 +161,7 @@ void WebCrawler::findWord(char c)
     else {
     	n = new URLRecordList;
     	n->_urlRecordIndex = _headURL;
+    	n->_next=NULL;
     	_wordToURLRecordList->insertItem(word, n);
 		}
 	}
