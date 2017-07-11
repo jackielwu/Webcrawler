@@ -1,5 +1,5 @@
 Name: Jackie Wu
 Login: wu891
 Working features: url.txt
-Nonworking features: word.txt
+Nonworking features: word.txt (partially works: compiles, runs, and outputs. Word finding not refined. words.txt has a lot of no urlIndex entries.)
 Extra features: none
