@@ -229,7 +229,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 
 int main( int argc, char ** argv )
 {
-  const char * option;
+  const char * option = "";
   char ** url;
   int maxURL;
   int nURL;
@@ -238,28 +238,30 @@ int main( int argc, char ** argv )
 	  printUsage();
 	  exit(1);	  
   }
-  else if (argc == 2) {
-	  option = "";
-	  url = &argv[1];
-  }
-  else { 
+  else if (strcmp(argv[1], "-u") == 0){ 
 	  // There is an option
 	  option = argv[1];
 	  maxURL = atoi(argv[2]);
 	  url = &argv[3];
-	  nURL = argc-2;
+	  nURL = argc-3;
+  }
+  else {
+  	option = "";
+	  url = &argv[1];
   }
   
   // Process the arguments
-  if ( !strcmp(option,"-h") ) {
-	  printUsage();
-	  exit(1);
-  }
+  if ( !strcmp(option,"-u") ) {
+  	WebCrawler wc(maxURL, nURL, (const char **)url);
+	  wc.crawl();
+	  wc.writeURLFile("url.txt");
+	  wc.writeWordFile("word.txt");
+	}
   
   if ( !strcmp(option,"") ) {
 	  // default 1000 maxURLs
-	  maxURL = 10;
-	  nURL = 1;
+	  maxURL = 1000;
+	  nURL = argc -1;
 	  WebCrawler wc(maxURL, nURL, (const char **)url);
 	  wc.crawl();
 	  wc.writeURLFile("url.txt");
