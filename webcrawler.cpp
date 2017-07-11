@@ -169,7 +169,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 {
 	int titleLength;
 	char title[MaxURLLength];
-	enum { START, TAG, TITLE} state;
+	enum { START, TAG, TITLE, END} state;
 
 	state = START;
 	
@@ -194,7 +194,7 @@ void WebCrawler::findTitle(char *buffer, int n)
 		case TITLE: {
 			if (match(&b,"</title>")) {
 				// Found ending "
-				state = TAG;
+				state = END;
 				title[titleLength] = '\0';
 				//onAnchorFound(urlAnchor);
 				//printf("%d %s\n",_headURL-1, title);
@@ -220,6 +220,9 @@ void WebCrawler::findTitle(char *buffer, int n)
 				b++;
 			}
 			break;
+		}
+		case END: {
+			return;
 		}
 		default:;
 		}
