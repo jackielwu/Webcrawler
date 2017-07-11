@@ -54,7 +54,7 @@ void WebCrawler::crawl()
 
 void WebCrawler::writeURLFile(const char * urlFileName)
 {
-	printf("%d\n", _tailURL);
+	//printf("%d\n", _tailURL);
 	FILE *file;
 	int n;
 	file = fopen(urlFileName,"w");
