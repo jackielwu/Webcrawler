@@ -93,6 +93,9 @@ void WebCrawler::onContentFound(char c) {
   if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' ') {
   	findWord(c);
   }
+  else {
+  	tempLength=0;
+  }
 }
 
 void WebCrawler::onAnchorFound(char * url)
