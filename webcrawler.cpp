@@ -92,14 +92,7 @@ void WebCrawler::onContentFound(char c) {
   //printf("%c", c);
   if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' ') {
   	findWord(c);
-  }/*
-  else {
-  	temp+='\0';
-  	//printf("%s\n",temp.c_str());
-  	_urlArray[_headURL]._description = strdup(temp.c_str());
-  	temp.clear();
-  }*/
-  //findWord(c);
+  }
 }
 
 void WebCrawler::onAnchorFound(char * url)
