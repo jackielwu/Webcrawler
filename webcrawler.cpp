@@ -24,7 +24,7 @@ void WebCrawler::crawl()
 {
 	while(_headURL < _tailURL)
 	{
-		printf("crawl\n");
+		//printf("crawl\n");
 		//Fetch the next URL is _headURL
 		int n;
 		char * buffer = fetchHTML(_urlArray[_headURL]._url, &n);
@@ -75,10 +75,10 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	const char *key;
 	URLRecordList *e;
 	while(iterator.next(key,e)) {
-		printf("\n%s",key);
+		//printf("\n%s",key);
 		fprintf(file,"%s", key);
 		do {
-			printf(" %d",e->_urlRecordIndex);
+			//printf(" %d",e->_urlRecordIndex);
 			fprintf(file," %d", e->_urlRecordIndex);
 			e=e->_next;
 		}
@@ -108,7 +108,7 @@ void WebCrawler::onAnchorFound(char * url)
   	{
   		std::string u(url);
   		if(u.find("http") == 0) {
-  			printf("%d %s\n",_tailURL, url);
+  			//printf("%d %s\n",_tailURL, url);
   			_urlArray[_tailURL]._url = strdup(url);
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   			_tailURL++;
