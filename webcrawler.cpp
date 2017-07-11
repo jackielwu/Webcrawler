@@ -139,20 +139,29 @@ void WebCrawler::findWord(char c)
     temp[tempLength]='\0';
     const char *word = strdup(temp);
     tempLength=0;
-    //printf("%s\n",word);
-    URLRecordList *e = new URLRecordList;
-    //URLRecordList *n = new URLRecordList;
+    printf("%s\n",word);
+    URLRecordList *e;
+    URLRecordList *n;
 		e->_urlRecordIndex = _headURL-1;
-    printf("%d\n",_wordToURLRecordList->insertItem(word, e)); //{
-    	/*if(e->_urlRecordIndex != _headURL-1) {
+    if(_wordToURLRecordList->find(word, e)) {
     		//printf("%s\n",_wordToURLRecordList->_key);
-    		e->_next = n;
-    		n->_next = NULL;
+    	n=e;
+    	while(n != NULL) {
+    		if(n->_urlRecordIndex == _headURL-1) {
+    			return;
+    		}
+				n=n->_next;
     	}
+    	n = new URLRecordList;
+    	n->_urlRecordIndex = _headURL-1;
+    	n->_next = e;
+    	_wordToURLRecordList->insertItem(word,n);
     }
     else {
+    	n = new URLRecordList;
+    	n->_urlRecordIndex = headURL-1;
     	_wordToURLRecordList->insertItem(word, n);
-		}*/
+		}
 	}
 }
 
