@@ -77,11 +77,12 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	while(iterator.next(key,e)) {
 		printf("\n%s",key);
 		fprintf(file,"%s", key);
-		while(e->_next != NULL) {
+		do {
 			printf(" %d",e->_urlRecordIndex);
 			fprintf(file," %d", e->_urlRecordIndex);
 			e=e->_next;
 		}
+		while(e != NULL);
 		fprintf(file,"\n");
 	}
 	fclose(file);
