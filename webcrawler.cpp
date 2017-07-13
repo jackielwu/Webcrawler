@@ -91,7 +91,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 
 void WebCrawler::onContentFound(char c) {
   //default gethttp
-  //printf("%c", c);
+  printf("%c", c);
   if(c>='a'&&c<='z' || c>='A'&&c<='Z'|| c==' ') {
   	findWord(c);
   }
@@ -126,7 +126,7 @@ void WebCrawler::onAnchorFound(char * url)
 
 void WebCrawler::findWord(char c)
 {
-	printf("here\n");
+	//printf("here\n");
   tempLength=0;
   if(c != ' ') {
     //put in string
