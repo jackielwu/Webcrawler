@@ -126,6 +126,7 @@ void WebCrawler::onAnchorFound(char * url)
 
 void WebCrawler::findWord(char c)
 {
+	printf("here\n");
   tempLength=0;
   if(c != ' ') {
     //put in string
