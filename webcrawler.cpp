@@ -75,7 +75,7 @@ void WebCrawler::writeWordFile(const char *wordFileName)
 	const char *key;
 	URLRecordList *e;
 	while(iterator.next(key,e)) {
-		//printf("\n%s",key);
+		printf("\n%s",key);
 		fprintf(file,"%s", key);
 		do {
 			//printf(" %d",e->_urlRecordIndex);
