@@ -41,6 +41,8 @@ class WebCrawler: private SimpleHTMLParser {
   void findWord(char c);
   
   void findTitle(char *buffer, int n);
+  
+  bool isHTML(char * buffer);
 
  public:
   // Create a web crawler object with the initial urls

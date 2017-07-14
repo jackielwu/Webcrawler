@@ -6,6 +6,8 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 {
 	_maxUrls = maxUrls;
 	_urlArray = new URLRecord[_maxUrls];
+	//printf("%d\n", _maxUrls);
+	//printf("%lu\n", sizeof(_urlArray));
 	_urlToUrlRecord = new HashTableTemplate<int>();
 	_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 	_headURL = 0;
@@ -35,11 +37,16 @@ void WebCrawler::crawl()
 		{
 			continue;
 		}
+		//isHTML(buffer);
+		if(!(buffer[0]=='<'))
+		{
+			continue;
+		}
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
 		findTitle(buffer, n);
 		
-		
+		//printf("%s\n",_urlArray[_headURL-1]._url);
 		parse(buffer, n);
 		
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
@@ -283,5 +290,14 @@ void printUsage()
 {
   fprintf( stderr, "  Usage: webcrawl [-u <maxurls>] url-list\n");
   fprintf( stderr, "  Example: webcrawl https://www.cs.purdue.edu/\n");
+}
+bool WebCrawler::isHTML(char * buffer)
+{
+	char html[7];
+	strncpy(html, buffer,6);
+	html[6]='\0';
+	bool result = strcmp(html,"<html>")==0;
+	printf("%d\n",result);
+	return result;
 }
 
