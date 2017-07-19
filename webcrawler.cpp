@@ -31,17 +31,19 @@ void WebCrawler::crawl()
 		//Fetch the next URL is _headURL
 		int n;
 		char * buffer = fetchHTML(_urlArray[_headURL]._url, &n);
+		//printf("%s\n",buffer);
 		_headURL++;
 		//If doc is not txt/html
-		if(buffer == NULL)
+		if(!isHTML(buffer))
 		{
+			continue;
+		}
+		if(strlen(buffer)<=3) {
+			//printf("redirect\n");
+			_urlArray[_headURL-1]._description = strdup("Redirect.");
 			continue;
 		}
 		//isHTML(buffer);
-		if(!(buffer[0]=='<'))
-		{
-			continue;
-		}
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
 		findTitle(buffer, n);
@@ -211,7 +213,7 @@ void WebCrawler::findWord(char c)
 
 void WebCrawler::findTitle(char *buffer, int n)
 {
-	int titleLength;
+	int titleLength=0;
 	char title[MaxURLLength];
 	enum { START, TAG, TITLE, END} state;
 
@@ -239,11 +241,25 @@ void WebCrawler::findTitle(char *buffer, int n)
 			if (match(&b,"</title>")) {
 				// Found ending "
 				state = END;
-				title[titleLength] = '\0';
-				//onAnchorFound(urlAnchor);
-				//printf("%d %s\n",_headURL-1, title);
-				_urlArray[_headURL-1]._description = strdup(title);
-				//printf("\n");
+				//printf(".%s.%d\n",title,titleLength);
+				if(titleLength>0){
+					title[titleLength] = '\0';
+					//onAnchorFound(urlAnchor);
+					//printf("%d %s\n",_headURL-1, title);
+					int i=0;
+					for(;i<titleLength;i++) {
+						if(title[i]<' ' || title[i] > '~') {
+							title[i]=' ';
+						}
+					}
+					//printf("break\n");
+					_urlArray[_headURL-1]._description = strdup(title);
+					//printf("\n");
+				}
+				else {
+					_urlArray[_headURL-1]._description = strdup("No Title.");
+				}
+				//printf(".%s.%d\n",title,titleLength);
 			}
 			else {
 				if ( titleLength < MaxURLLength-1) {
@@ -329,11 +345,13 @@ void printUsage()
 }
 bool WebCrawler::isHTML(char * buffer)
 {
-	char html[7];
-	strncpy(html, buffer,6);
-	html[6]='\0';
-	bool result = strcmp(html,"<html>")==0;
-	printf("%d\n",result);
-	return result;
+	if(buffer == NULL){
+		return false;
+	}
+	if(buffer[0]=='%') {
+		_urlArray[_headURL-1]._description = strdup("PDF.");
+		return false;
+	}
+	return true;
 }
 

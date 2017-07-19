@@ -96,6 +96,10 @@ main( int argc, char ** argv )
 	  char * buffer = fetchHTML( url, &n);
 	  if (buffer != NULL) {
 		  fwrite(buffer, n, 1, stdout);
+			FILE * pFile;
+			pFile = fopen ("myfile.txt","w");
+			fprintf (pFile, "%s",buffer);
+			fclose (pFile);
 	  }
   } else if ( !strcmp(option,"-t") ) {
 	  // Eliminate tags
