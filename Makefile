@@ -12,4 +12,4 @@ git-commit:
 	git commit
 
 clean:
-	rm -f *.o gethttp core webcrawl
+	rm -f *.o url.txt word.txt gethttp core webcrawl
