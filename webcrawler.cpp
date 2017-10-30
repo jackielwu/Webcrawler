@@ -6,10 +6,13 @@ WebCrawler::WebCrawler(int maxUrls, int nurlRoots, const char ** urlRoots)
 {
 	_maxUrls = maxUrls;
 	_urlArray = new URLRecord[_maxUrls];
+	//printf("%d\n", _maxUrls);
+	//printf("%lu\n", sizeof(_urlArray));
 	_urlToUrlRecord = new HashTableTemplate<int>();
 	_wordToURLRecordList = new HashTableTemplate<URLRecordList *>();
 	_headURL = 0;
 	_tailURL = 0;
+	tempLength=0;
 	for(int i=0;i<nurlRoots;i++)
 	{
 	  URLRecord *e = new URLRecord;
@@ -28,17 +31,24 @@ void WebCrawler::crawl()
 		//Fetch the next URL is _headURL
 		int n;
 		char * buffer = fetchHTML(_urlArray[_headURL]._url, &n);
+		//printf("%s\n",buffer);
 		_headURL++;
 		//If doc is not txt/html
-		if(buffer == NULL)
+		if(!isHTML(buffer))
 		{
 			continue;
 		}
+		if(strlen(buffer)<=3) {
+			//printf("redirect\n");
+			_urlArray[_headURL-1]._description = strdup("Redirect.");
+			continue;
+		}
+		//isHTML(buffer);
 		//Get first 500 char of doc w/o tags
 		//Add to description to URLRecord
 		findTitle(buffer, n);
 		
-		
+		//printf("%s\n",_urlArray[_headURL-1]._url);
 		parse(buffer, n);
 		
 		//Find all hyperlinks of doc and add them to _urlArray and _urlToUrlRecord if not already to _urlToUrlRecord
@@ -107,19 +117,55 @@ void WebCrawler::onAnchorFound(char * url)
   	if(url[0] != '#')
   	{
   		std::string u(url);
+  		//printf("%d %s\n",_tailURL, url);
+  		//printf("%s\n",_urlArray[_headURL-1]._url);
   		if(u.find("http") == 0) {
-  			printf("%d %s\n",_tailURL, url);
   			_urlArray[_tailURL]._url = strdup(url);
   			_urlToUrlRecord->insertItem((const char*)url, _tailURL);
   			_tailURL++;
   		}
-  		/*else {
-  			//u.insert(0, "/");//handle separation for relative links
-  			u.insert(0, _urlArray[0]._url);
-  			_urlArray[_tailURL++]._url = (char *)u.c_str();
+  		else if(u.find("ftp")==0){;}
+  		else if(u.find("mailto")==0){;}
+  		else if(u.find("//")==0) {
+  			u.insert(0,"http:");
+  			_urlArray[_tailURL]._url = strdup(u.c_str());
   			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
+  			_tailURL++;
   			//printf("%s\n", _urlArray[_tailURL-1]._url);
-  		}*/
+  		}
+  		else if(u.find("/")==0) {
+  			//printf("/\n");
+  			u.insert(0,_urlArray[_headURL-1]._url);
+  			_urlArray[_tailURL]._url = strdup(u.c_str());
+  			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
+  			_tailURL++;
+  			//printf("%s\n", _urlArray[_headURL-1]._url);
+  			//printf("%s\n", _urlArray[_tailURL-1]._url);
+  		}
+  		else if(u.find("../")==0) {
+  			//printf("../\n");
+  			std::string root(_urlArray[_headURL-1]._url);
+  			//printf("%s\n",root.c_str());
+  			int index = root.find_last_of("/");
+  			root.erase(index,root.length()-index);
+  			//printf("%s\n",root.c_str());
+  			u.erase(0,2);
+  			u.insert(0,root);
+  			//printf("%s\n",u.c_str());
+  			_urlArray[_tailURL]._url = strdup(u.c_str());
+  			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
+  			_tailURL++;
+  		}
+  		else {
+  			//printf("%s\n",_urlArray[_headURL-1]._url);
+  			//u.insert(0, "/");//handle separation for relative links
+  			u.insert(0, _urlArray[_headURL-1]._url);
+  			_urlArray[_tailURL]._url = strdup(u.c_str());
+  			_urlToUrlRecord->insertItem((const char*)u.c_str(), _tailURL);
+  			_tailURL++;
+  			//printf("%s\n", _urlArray[_headURL-1]._url);
+  			//printf("%s\n", _urlArray[_tailURL-1]._url);
+  		}
   	}
 	}
 }
@@ -196,11 +242,25 @@ void WebCrawler::findTitle(char *buffer, int n)
 			if (match(&b,"</title>")) {
 				// Found ending "
 				state = END;
-				title[titleLength] = '\0';
-				//onAnchorFound(urlAnchor);
-				//printf("%d %s\n",_headURL-1, title);
-				_urlArray[_headURL-1]._description = strdup(title);
-				//printf("\n");
+				//printf(".%s.%d\n",title,titleLength);
+				if(titleLength>0){
+					title[titleLength] = '\0';
+					//onAnchorFound(urlAnchor);
+					//printf("%d %s\n",_headURL-1, title);
+					int i=0;
+					for(;i<titleLength;i++) {
+						if(title[i]<' ' || title[i] > '~') {
+							title[i]=' ';
+						}
+					}
+					//printf("break\n");
+					_urlArray[_headURL-1]._description = strdup(title);
+					//printf("\n");
+				}
+				else {
+					_urlArray[_headURL-1]._description = strdup("No Title.");
+				}
+				//printf(".%s.%d\n",title,titleLength);
 			}
 			else {
 				if ( titleLength < MaxURLLength-1) {
@@ -283,5 +343,16 @@ void printUsage()
 {
   fprintf( stderr, "  Usage: webcrawl [-u <maxurls>] url-list\n");
   fprintf( stderr, "  Example: webcrawl https://www.cs.purdue.edu/\n");
+}
+bool WebCrawler::isHTML(char * buffer)
+{
+	if(buffer == NULL){
+		return false;
+	}
+	if(buffer[0]=='%') {
+		_urlArray[_headURL-1]._description = strdup("PDF.");
+		return false;
+	}
+	return true;
 }
 

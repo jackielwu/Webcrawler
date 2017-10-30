@@ -9,7 +9,7 @@ gethttp: gethttp.cpp openhttp.cpp SimpleHTMLParser.cpp
 
 git-commit:
 	git add Makefile *.h *.cpp README .local.git.out >> .local.git.out
-	git commit -a -m "Commit web-crawler" >> .local.git.out
+	git commit -a
 
 clean:
-	rm -f *.o gethttp core webcrawl
+	rm -f *.o url.txt word.txt gethttp core webcrawl
